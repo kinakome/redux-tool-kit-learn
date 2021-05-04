@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   decrement,
   increment,
@@ -7,13 +7,16 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+} from "./counterSlice";
+import styles from "./Counter.module.css";
 
 export function Counter() {
+  //stateの値を参照してローカルの変数に代入している
   const count = useSelector(selectCount);
+  //dispatchを使う
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  //ローカルで一時的に保持したい値は、hooksのuseStateを使う
+  const [incrementAmount, setIncrementAmount] = useState("2");
 
   const incrementValue = Number(incrementAmount) || 0;
 
@@ -23,6 +26,7 @@ export function Counter() {
         <button
           className={styles.button}
           aria-label="Decrement value"
+          //dispatchの引数に呼び出したいアクションの関数を与える
           onClick={() => dispatch(decrement())}
         >
           -
